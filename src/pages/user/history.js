@@ -21,7 +21,6 @@ function App() {
   const router = useRouter();
   const { query } = router;
   const { id } = query;
-  console.log(id);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -30,7 +29,6 @@ function App() {
         const response = await fetch(
           `https://tapago-api-production.up.railway.app/api/${id}`
         );
-        console.log(response);
         const data = await response.json();
         setUser(data);
       } catch (error) {

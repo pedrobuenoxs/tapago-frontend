@@ -27,7 +27,7 @@ function Calendar(props) {
   return (
     <div className={style.calendar}>
       <h3>
-        {groupName} - {scores.length}/365
+        {groupName} - {scores ? scores.length : ""}/365
       </h3>
       <h4>
         {new Date(year, month).toLocaleString("default", {
