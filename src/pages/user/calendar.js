@@ -4,8 +4,8 @@ import style from "./Calendar.module.css";
 function Calendar(props) {
   const { year, month, scores, groupName, key } = props;
   const daysInMonth = new Date(year, month + 1, 0).getDate();
-  const monthStart = new Date(year, month, 1).getDay();
-  const monthEnd = new Date(year, month, daysInMonth).getDay();
+  const monthStart = new Date(year, month, 1).getDay() + 1;
+  const monthEnd = new Date(year, month, daysInMonth).getDay() + 1;
 
   // Create an array of dates for the month
   const dates = [];
