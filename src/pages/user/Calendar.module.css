@@ -9,10 +9,30 @@
     margin-top: 0;
     margin-bottom: 10px;
   }
+
+  .calendar h3 {
+    font-size: 1.6rem;
+    margin-top: 0;
+    margin-bottom: 10px;
+    border-bottom: 1px solid black;
+  }
+  .calendar h4 {
+    font-size: 0.8rem;
+    margin-top: 0;
+    margin-bottom: 10px;
+
+  }
   
   .calendar table {
     width: 100%;
     border-collapse: collapse;
+  }
+  
+  .calendar thead th {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    color: #000000;
+    background-color: rgb(226, 156, 70);
   }
   
   .calendar th,
@@ -23,8 +43,14 @@
   }
   
   .calendar td {
-    vertical-align: top;
+    vertical-align: center;
     aspect-ratio: 1;
+  }
+
+  .calendar tr {
+    background-color: rgb(253, 253, 253);
+    text-align: center;
+
   }
   
   .calendar .calendar-day {

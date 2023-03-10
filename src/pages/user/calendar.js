@@ -26,13 +26,16 @@ function Calendar(props) {
   // Render the calendar
   return (
     <div className={style.calendar}>
-      <h2>
+      <h3>
+        {groupName} - {scores.length}/365
+      </h3>
+      <h4>
         {new Date(year, month).toLocaleString("default", {
           month: "long",
           year: "numeric",
-        })}{" "}
-        - {groupName}
-      </h2>
+        })}
+      </h4>
+
       <table>
         <thead>
           <tr>
@@ -67,7 +70,11 @@ function Calendar(props) {
                   return (
                     <td key={dayIndex}>
                       <div className="calendar-score">
-                        {score == "false" || score ? score.score : date}
+                        {score
+                          ? score.score == "false"
+                            ? "✅"
+                            : score.score
+                          : date}
                       </div>
                     </td>
                   );

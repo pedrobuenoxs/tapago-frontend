@@ -65,12 +65,12 @@ function App() {
   };
 
   return (
-    <div>
+    <div className={style.view}>
       {loading ? (
         <Loading />
       ) : (
         <>
-          <h1>{user.name}</h1>
+          <h2>{user.name}</h2>
           {generateCalendar(userGroups)}
         </>
       )}
