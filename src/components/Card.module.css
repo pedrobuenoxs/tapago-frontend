@@ -55,7 +55,10 @@
   
   .night {
     background-color: #1f3f66;
-    
+    color: #ffffff;
+  }
+  .night .name {
+    color: #ffffff;
   }
   
   .score {
@@ -69,6 +72,10 @@
     font-size: 14px;
     margin-left: 16px;
     color: #000000;
+  }
+
+  .night .group {
+    color: #ffffff;
   }
   
 

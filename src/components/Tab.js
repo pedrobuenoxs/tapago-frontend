@@ -8,7 +8,7 @@ import {
 import styles from "./Tab.module.css";
 
 function Tab() {
-  const [activeTab, setActiveTab] = useState(0);
+  const [activeTab, setActiveTab] = useState(1);
 
   const handleClick = (index) => {
     setActiveTab(index);
