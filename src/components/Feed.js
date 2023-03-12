@@ -44,12 +44,5 @@ export default function Feed() {
     );
   }
 
-  return (
-    <div>
-      <div className={style.header}>
-        <h1>Geral</h1>
-      </div>
-      {generateScores()}
-    </div>
-  );
+  return <div>{generateScores()}</div>;
 }

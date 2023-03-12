@@ -4,11 +4,13 @@ import { Inter } from "next/font/google";
 
 const inter = Inter({ subsets: ["latin"] });
 import Feed from "@/components/Feed";
+import Tab from "@/components/Tab";
 
 export default function Home() {
   return (
-    <div className="container">
+    <>
       <Feed />
-    </div>
+      <Tab />
+    </>
   );
 }

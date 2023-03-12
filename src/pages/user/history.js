@@ -2,7 +2,16 @@ import React, { useEffect } from "react";
 import Calendar from "./calendar";
 import { useRouter } from "next/router";
 import style from "./History.module.css";
+import UserProfile from "./UserProfile";
 function App() {
+  const profileData = {
+    name: "Nome Sobrenome",
+    age: 25,
+    email: "email@exemplo.com",
+    weight: 70,
+    height: 1.75,
+    avatar: "https://i.pravatar.cc/300",
+  };
   function Loading() {
     return (
       <div className={style.loading}>
@@ -65,6 +74,7 @@ function App() {
         <>
           <h2>{user.name}</h2>
           {generateCalendar(userGroups)}
+          <UserProfile user={profileData} />
         </>
       )}
     </div>
