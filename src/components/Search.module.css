@@ -1,0 +1,65 @@
+.userCard {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  padding: 5px;
+}
+.userAvatar {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: #ccc;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.5rem;
+  margin-right: 10px;
+}
+
+.name {
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+.search li {
+  padding: 0.5rem;
+  cursor: pointer;
+}
+
+.search ul {
+  display: flex;
+  list-style: none;
+  justify-content: space-evenly;
+  margin: 0;
+  padding: 0;
+}
+
+.search li:hover {
+  background-color: #b6b6b6;
+}
+
+
+
+.searchContainer input[type="text"] {
+  padding: 10px;
+  margin-right: 5px;
+  font-size: 1rem;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+.searchContainer button {
+  padding: 10px;
+  font-size: 1rem;
+  border-radius: 5px;
+  border: none;
+  background-color: #3498db;
+  color: #fff;
+  cursor: pointer;
+}
+
+.searchContainer button:hover {
+  background-color: #2980b9;
+}

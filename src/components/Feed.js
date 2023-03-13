@@ -1,34 +1,26 @@
 import React, { useState, useEffect } from "react";
 import Card from "./Card";
-import style from "./Feed.module.css";
+import Loading from "./Loading";
 
 export default function Feed() {
-  const [scores, setScores] = useState([
-    {
-      id: "640c8c4abe3edcbf79680e3e",
-      score: "false",
-      date: "11/03/2023",
-      time: "11:12:26",
-      group: {
-        name: "Tá Pago 2023 🦾",
-        id: "120363042188580941@g.us",
-      },
-      user: {
-        name: "Leozin",
-        id: "5514996836753@s.whatsapp.net",
-        iid: "640c8c31be3edcbf79680e39",
-      },
-    },
-  ]);
+  const [scores, setScores] = useState([]);
+  const [loading, setLoading] = useState(true);
   const [groupName, setGroupName] = useState("");
+
   useEffect(() => {
     const fetchData = async () => {
-      const response = await fetch(
-        `https://tapago-api-production.up.railway.app/scores`
-      );
-      const data = await response.json();
-      console.log(data.sort((a, b) => a.date - b.date));
-      setScores(data);
+      setLoading(true);
+      try {
+        const response = await fetch(
+          `https://tapago-api-production.up.railway.app/scores`
+        );
+        const data = await response.json();
+        setScores(data.sort((a, b) => a.date - b.date));
+      } catch (error) {
+        console.error(error);
+      } finally {
+        setLoading(false);
+      }
     };
 
     fetchData();
@@ -44,5 +36,5 @@ export default function Feed() {
     );
   }
 
-  return <div>{generateScores()}</div>;
+  return <div>{loading ? <Loading /> : generateScores()}</div>;
 }
