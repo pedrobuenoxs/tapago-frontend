@@ -28,13 +28,13 @@ export default function Feed() {
 
   function generateScores() {
     return (
-      <div>
+      <>
         {scores.map((record) => (
-          <Card key={record.id} record={record} />
+          <Card key={scores.id} record={record} />
         ))}
-      </div>
+      </>
     );
   }
 
-  return <div>{loading ? <Loading /> : generateScores()}</div>;
+  return <>{loading ? <Loading /> : generateScores()}</>;
 }

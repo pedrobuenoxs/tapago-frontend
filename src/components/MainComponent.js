@@ -1,6 +1,6 @@
 import Tab from "./Tab";
 
-function MainComponent({ children }) {
+export default function MainComponent({ children }) {
   return (
     <>
       <div>{children}</div>
@@ -8,5 +8,3 @@ function MainComponent({ children }) {
     </>
   );
 }
-
-export default MainComponent;

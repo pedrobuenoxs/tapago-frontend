@@ -3,44 +3,46 @@
   bottom: 0;
   left: 0;
   width: 100%;
-  height: auto; /* set a fixed height or a percentage of the viewport height */
-  perspective: 1000px;
-  background-color: #b73c58;
+  height: auto;
+  background-color: #ffffff;
+  border-top: 1px solid #e0e0e0;
+  box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
 }
 
 .tabButtons {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
   margin: 0;
-  padding: 5px;
+  padding: 10px 0;
   list-style: none;
   position: relative;
   z-index: 1;
 }
 
+
+
 .tabButton {
-  padding: 12px 24px;
-  margin: 0 2px;
-  font-size: 18px;
-  font-weight: bold;
-  color: #fff;
-  background-color: #3c95b7;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding: 12px 0;
+  font-size: 20px;
+  color: #8e8e8e;
+  background-color: transparent;
   border: none;
-  border-radius: 10px 10px 0 0;
   cursor: pointer;
-  transition: transform 0.3s cubic-bezier(0.2, 1, 0.3, 1),
-    box-shadow 0.3s cubic-bezier(0.2, 1, 0.3, 1);
+  transition: color 0.3s;
 }
 
-.tabButton:hover {
-  transform: translateY(-2px);
-  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+.tabButton:hover,
+.activeTabButton {
+  color: #000000;
 }
 
 .activeTabButton {
-  transform: translateY(-4px) scale(1.1);
-  box-shadow: 0px 8px 12px rgba(0, 0, 0, 0.2);
+  font-weight: bold;
 }
 
 .tabContent {
@@ -50,6 +52,6 @@
   border-top: none;
   border-radius: 0 0 10px 10px;
   padding: 24px;
-  height: calc(100% - 48px); /* subtract the height of the tab buttons from the height of the container */
-  overflow-y: auto; /* enable vertical scrolling */
+  height: calc(100% - 48px);
+  overflow-y: auto;
 }
