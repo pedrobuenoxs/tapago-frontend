@@ -58,7 +58,7 @@ function Tab() {
           className={`${styles.tabButton} ${
             activeTab === 2 ? styles.activeTabButton : ""
           }`}
-          href="/ranking"
+          href="/stats"
         >
           <FontAwesomeIcon icon={faChartLine} />
         </Link>
