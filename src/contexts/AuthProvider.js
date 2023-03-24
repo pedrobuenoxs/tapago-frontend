@@ -26,6 +26,27 @@ export const AuthProvider = ({ children }) => {
       .finally(() => setLoading(false));
   }, []);
 
+  const editPerfil = async ({ name, file, id }) => {
+    setLoading(true);
+    try {
+      const formData = new FormData();
+      formData.append("name", name);
+      if (file) {
+        formData.append("avatar", file);
+      }
+
+      const response = await api.patch(`/user/profile/upload/${id}`, {
+        body: formData,
+      });
+
+      console.log(response);
+      setLoading(false);
+    } catch (error) {
+      setLoading(false);
+      console.log(error.response.data);
+    }
+  };
+
   const login = async (email, password) => {
     setLoading(true);
 
@@ -86,7 +107,7 @@ export const AuthProvider = ({ children }) => {
 
   return (
     <AuthContext.Provider
-      value={{ user, login, logout, auth, register, loading }}
+      value={{ user, login, logout, auth, register, loading, editPerfil }}
     >
       {children}
     </AuthContext.Provider>

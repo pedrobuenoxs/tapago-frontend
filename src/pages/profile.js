@@ -1,16 +1,16 @@
-import React, { useEffect, useState } from "react";
+import Reactfrom "react";
 
 import ProfileHeader from "@/components/ProfileHeader";
-import Stats from "@/components/Stats";
 
 import { useAuth } from "../contexts/AuthProvider";
 export default function Profile() {
   const { user } = useAuth();
+  console.log(user);
 
   return (
     <>
       <ProfileHeader
-        avatar={""}
+        avatar={user.imageUrl}
         name={user.name}
         email={user.email}
         job={user.job}

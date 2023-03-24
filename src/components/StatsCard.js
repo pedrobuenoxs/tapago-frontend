@@ -1,5 +1,4 @@
 import { useState } from "react";
-import dayjs from "dayjs";
 import {
   createStyles,
   UnstyledButton,
@@ -11,14 +10,9 @@ import {
   Image,
   Button,
 } from "@mantine/core";
-import {
-  IconSwimming,
-  IconBike,
-  IconRun,
-  IconChevronDown,
-  IconChevronUp,
-} from "@tabler/icons-react";
+
 import { useFeed } from "@/contexts/FeedProvider";
+
 const useStyles = createStyles((theme) => ({
   root: {
     backgroundImage: `linear-gradient(-60deg, ${
@@ -96,17 +90,12 @@ const useStyles = createStyles((theme) => ({
     textAlign: "center",
   },
 
-  controls: {
+  control: {
     display: "flex",
-    flexDirection: "column",
-    marginRight: `calc(${theme.spacing.xl} * 2)`,
-
-    [theme.fn.smallerThan("xl")]: {
-      flexDirection: "row",
-      alignItems: "center",
-      marginRight: 0,
-      marginBottom: theme.spacing.xl,
-    },
+    flexDirection: "row",
+    color: theme.white,
+    marginBottom: theme.spacing.md,
+    backgroundColor: theme.colors[theme.primaryColor][6],
   },
 
   date: {
@@ -114,27 +103,6 @@ const useStyles = createStyles((theme) => ({
     display: "flex",
     flexDirection: "column",
     justifyContent: "center",
-  },
-
-  control: {
-    height: rem(28),
-    width: "100%",
-    color: theme.colors[theme.primaryColor][2],
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-    borderRadius: theme.radius.md,
-    transition: "background-color 50ms ease",
-
-    [theme.fn.smallerThan("xl")]: {
-      height: rem(34),
-      width: rem(34),
-    },
-
-    "&:hover": {
-      backgroundColor: theme.colors[theme.primaryColor][5],
-      color: theme.white,
-    },
   },
 
   controlIcon: {
@@ -158,7 +126,6 @@ const StatsControls = () => {
   const { classes } = useStyles();
   const { groups, loading } = useFeed();
   const [currentGroup, setCurrentGroup] = useState(groups[0]);
-  console.log(currentGroup);
   const groupButtons = () => {
     return (
       <Group position="center" className={classes.controls}>
@@ -166,7 +133,7 @@ const StatsControls = () => {
           <Button
             key={group[0]._id}
             onClick={() => setCurrentGroup(group)}
-            color={group === currentGroup ? "teal" : "gray"}
+            color={group === currentGroup ? "orange" : "gray"}
             variant="outline"
             size="sm"
             radius="md"
@@ -178,6 +145,8 @@ const StatsControls = () => {
       </Group>
     );
   };
+
+  console.log("currentGroup", currentGroup);
 
   const stats = currentGroup.map((stat) => (
     <Paper

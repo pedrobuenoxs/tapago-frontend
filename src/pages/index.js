@@ -6,8 +6,7 @@ import { useFeed } from "@/contexts/FeedProvider";
 
 const inter = Inter({ subsets: ["latin"] });
 
-export default function Home() {
-  const { user } = useAuth();
+export default function Feed() {
   const { loading } = useFeed();
   const changeGroup = (id) => {};
 
