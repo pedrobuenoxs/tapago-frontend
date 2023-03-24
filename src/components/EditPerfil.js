@@ -24,7 +24,6 @@ const EditPerfil = ({ setIsEditPerfil }) => {
   const handleSubmit = async (values) => {
     try {
       const { name, avatar } = values;
-      console.log(avatar);
       editPerfil({ name, file: avatar, id: user._id });
     } catch (error) {
       console.log(error);

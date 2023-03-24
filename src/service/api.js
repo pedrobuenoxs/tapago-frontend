@@ -10,6 +10,13 @@ export const api = axios.create({
   },
 });
 
+export const api_up = axios.create({
+  baseURL: "https://tapago-api-production.up.railway.app/api",
+  headers: {
+    "Content-Type": "multipart/form-data",
+  },
+});
+
 // api.interceptors.request.use(
 //   (config) => {
 //     console.log(config);

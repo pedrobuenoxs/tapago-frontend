@@ -4,7 +4,7 @@ import { createContext, useContext, useState, useEffect } from "react";
 import nookies, { parseCookies } from "nookies";
 import Router from "next/router";
 
-import { api } from "@/service/api";
+import { api, api_up } from "@/service/api";
 
 const AuthContext = createContext({});
 
@@ -34,16 +34,18 @@ export const AuthProvider = ({ children }) => {
       if (file) {
         formData.append("avatar", file);
       }
+      console.log({ name, file, id });
 
-      const response = await api.patch(`/user/profile/upload/${id}`, {
-        body: formData,
-      });
+      const response = await api_up.post(
+        `/user/profile/upload/${id}`,
+        formData
+      );
 
       console.log(response);
       setLoading(false);
     } catch (error) {
       setLoading(false);
-      console.log(error.response.data);
+      console.log(error.response);
     }
   };
 
