@@ -1,15 +1,27 @@
 // components/LoginPage.js
+import { TextInput, Checkbox, Button, Group, Box, Anchor } from "@mantine/core";
+import { useForm } from "@mantine/form";
 
 import { useState } from "react";
 import { useAuth } from "../contexts/AuthProvider";
-
-const LoginPage = () => {
+import styles from "./AuthModal.module.css";
+const LoginPage = ({ setIsLoginPage }) => {
   const { login } = useAuth();
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const form = useForm({
+    initialValues: {
+      email: "",
+      password: "",
+      termsOfService: false,
+    },
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+    validate: {
+      email: (value) => (/^\S+@\S+$/.test(value) ? null : "Invalid email"),
+      password: (value) => (value.length > 4 ? null : "Invalid password"),
+    },
+  });
+
+  const handleSubmit = async (values) => {
+    const { email, password } = values;
     try {
       await login(email, password);
     } catch (error) {
@@ -18,30 +30,49 @@ const LoginPage = () => {
   };
 
   return (
-    <div>
-      <h1>Login</h1>
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label>Email</label>
-          <input
-            type="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            required
-          />
-        </div>
-        <div>
-          <label>Password</label>
-          <input
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
-          />
-        </div>
-        <button type="submit">Login</button>
+    <Box maw={300} mx="auto">
+      <form onSubmit={form.onSubmit((values) => handleSubmit(values))}>
+        <TextInput
+          withAsterisk
+          label="Email"
+          placeholder="your@email.com"
+          {...form.getInputProps("email")}
+        />
+        <TextInput
+          withAsterisk
+          label="Senha"
+          placeholder="Sua senha"
+          {...form.getInputProps("password")}
+        />
+        <Anchor
+          href="/"
+          onClick={(event) => event.preventDefault()}
+          sx={(theme) => ({
+            paddingTop: 2,
+            color:
+              theme.colors[theme.primaryColor][
+                theme.colorScheme === "dark" ? 4 : 6
+              ],
+            fontWeight: 500,
+            fontSize: theme.fontSizes.xs,
+          })}
+        >
+          Forgot your password?
+        </Anchor>
+        <Checkbox
+          mt="md"
+          label="Eu aceito vender meus dados"
+          {...form.getInputProps("termsOfService", { type: "checkbox" })}
+        />
+
+        <Group position="right" mt="md">
+          <Button type="submit">Login</Button>
+          <Button onClick={() => setIsLoginPage(false)} type="submit">
+            Cadastrar
+          </Button>
+        </Group>
       </form>
-    </div>
+    </Box>
   );
 };
 

@@ -1,16 +1,17 @@
 import { Inter } from "next/font/google";
 import { useAuth } from "../contexts/AuthProvider";
+import StatsControls from "@/components/StatsCard";
+import { useEffect, useState } from "react";
+import { useFeed } from "@/contexts/FeedProvider";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
   const { user } = useAuth();
-  const email = "pedro@email.com";
-  const senha = "pedro";
+  const { loading } = useFeed();
+  const changeGroup = (id) => {};
 
-  return (
-    <div>
-      <div>Home</div>
-    </div>
-  );
+  if (loading) return <div>Loading...</div>;
+
+  return <div>{<StatsControls />}</div>;
 }

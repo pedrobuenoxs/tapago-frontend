@@ -3,18 +3,18 @@ import React, { useEffect, useState } from "react";
 import ProfileHeader from "@/components/ProfileHeader";
 import Stats from "@/components/Stats";
 
+import { useAuth } from "../contexts/AuthProvider";
 export default function Profile() {
-  const [data, setData] = useState({});
-  useEffect(() => {
-    fetch("https://jsonplaceholder.typicode.com/users/1")
-      .then((response) => response.json())
-      .then((json) => setData(json));
-  }, []);
+  const { user } = useAuth();
 
   return (
     <>
-      <ProfileHeader name={data.name} avatarUrl={"https://picsum.photos/200"} />
-      <Stats data={data} />
+      <ProfileHeader
+        avatar={""}
+        name={user.name}
+        email={user.email}
+        job={user.job}
+      />
     </>
   );
 }

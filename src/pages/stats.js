@@ -245,6 +245,11 @@ const data = {
     },
   ],
 };
+
+const changeGroup = (id) => {
+  const group = data.userGroups[id];
+};
+
 export default function Profile() {
   return (
     <>
