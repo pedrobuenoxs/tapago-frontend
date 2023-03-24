@@ -146,8 +146,6 @@ const StatsControls = () => {
     );
   };
 
-  console.log("currentGroup", currentGroup);
-
   const stats = currentGroup.map((stat) => (
     <Paper
       className={classes.stat}
