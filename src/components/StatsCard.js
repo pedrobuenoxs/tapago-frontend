@@ -131,7 +131,7 @@ const StatsControls = () => {
       <Group position="center" className={classes.controls}>
         {groups.map((group, index) => (
           <Button
-            key={group[0]._id}
+            key={group[0]?._id}
             onClick={() => setCurrentGroup(group)}
             color={group === currentGroup ? "orange" : "gray"}
             variant="outline"

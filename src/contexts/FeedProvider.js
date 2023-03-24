@@ -21,6 +21,7 @@ export const FeedProvider = ({ children }) => {
     });
     Promise.all(feed)
       .then((response) => {
+        console.log(response);
         const sort = response
           .sort((a, b) => {
             return b.length - a.length;
